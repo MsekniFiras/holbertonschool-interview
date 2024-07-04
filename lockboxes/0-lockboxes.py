@@ -1,6 +1,11 @@
 #!/usr/bin/python3
 
+
+"""Determines if all boxes can be opened."""
+
+
 def canUnlockAll(boxes):
+    """Return True if all boxes can be opened, else return False."""
     unlocked = {0}
     keys = [0]
     while keys:
