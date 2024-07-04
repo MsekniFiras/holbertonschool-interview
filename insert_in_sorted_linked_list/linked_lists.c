@@ -1,5 +1,5 @@
 #include "lists.h"
-
+#include <stdlib.h>
 /*
 * intsert_node - insert node into head
 * @head: head of linked list
