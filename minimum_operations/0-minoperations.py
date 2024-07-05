@@ -5,14 +5,15 @@
 
 def minOperations(n):
     if n < 2:
-        return 0  # If n is less than 2, it's impossible to achieve using operations
+        return 0
 
     operations = 0
     factor = 2  # Start checking for factors from 2
 
     # Loop until n becomes 1
     while n > 1:
-        # While factor is a divisor of n, keep dividing n by factor and increase operations
+        # While factor is a divisor of n, keep dividing n by factor and
+        # increase operations
         while n % factor == 0:
             operations += factor
             n = n // factor
