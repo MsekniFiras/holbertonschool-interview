@@ -8,31 +8,24 @@
  **/
 int is_palindrome(listint_t **head)
 {
-    listint_t *oldHead = *head; // Pointer to traverse the list
-    int counter = 0, i = 0; // Counters for the loop
-    int list[2048]; // Array to store the values of the list nodes
+    listint_t *oldHead = *head; 
+    int counter = 0, i = 0; 
+    int list[2048]; 
 
-    // First loop: count the number of elements in the list
+    /* Count the number of elements in the list */
     for (i = 0; oldHead; i++)
         oldHead = oldHead->next;
-    // If the list is empty or has one element, it's a palindrome
     if (i == 0)
-        return (1);
+        return (1); /* Empty or single-element list is a palindrome */
 
-    // Reset oldHead to the start of the list
-    oldHead = *head;
-    // Second loop: populate the array with the list's values
+    oldHead = *head; /* Reset to start */
     for (counter = 0; oldHead; oldHead = oldHead->next, counter++)
-        list[counter] = oldHead->n;
+        list[counter] = oldHead->n; /* Populate array with list values */
 
-    // Third loop: check if the list is a palindrome
-    for (counter = 0; counter < i; counter++)
-    {
-        // Compare the values from the start and end towards the center
+    for (counter = 0; counter < i; counter++) {
         if (list[counter] != list[i - counter - 1])
-            return (0); // Not a palindrome if any pair of values don't match
+            return (0); /* Return 0 if mismatch found */
     }
 
-    // If all pairs of values matched, it's a palindrome
-    return (1);
+    return (1); /* Return 1 if palindrome */
 }
