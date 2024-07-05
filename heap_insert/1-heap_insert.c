@@ -52,7 +52,6 @@ heap_t *heap_insert(heap_t **root, int value)
 heap_t *find_insert_position(heap_t *root)
 {
     /* Perform a level-order traversal to find the insertion point */
-    /* Use a queue for level-order traversal */
     heap_t *queue[100]; /* Assume heap has no more than 100 nodes */
     int front = -1, rear = -1;
     heap_t *temp = root;
