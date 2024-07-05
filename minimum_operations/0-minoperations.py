@@ -3,12 +3,10 @@
     Calculate the minimum number of operations
  """
 
+
 def minOperations(n):
-
-
     if n < 2:
         return 0
-
     operations = 0
     factor = 2  # Start checking for factors from 2
 
