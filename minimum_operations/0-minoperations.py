@@ -4,9 +4,6 @@
  """
 
 def minOperations(n):
-
-
-    
     if n < 2:
         return 0  # If n is less than 2, it's impossible to achieve using operations
 
@@ -22,11 +19,3 @@ def minOperations(n):
         factor += 1  # Move to the next factor
 
     return operations
-
-# Example usage
-if __name__ == "__main__":
-    n = 4
-    print("Min # of operations to reach {} char: {}".format(n, minOperations(n)))
-
-    n = 12
-    print("Min # of operations to reach {} char: {}".format(n, minOperations(n)))
