@@ -1,11 +1,12 @@
 #include <stdio.h>
 #include <math.h>
 
-void menger(int level);
-
 /**
- * menger - Draws a 2D Menger Sponge
+ * menger - Draws a 2D Menger Sponge of a given level.
  * @level: the level of the Menger Sponge to draw
+ *
+ * Description: This function prints a 2D representation of a Menger Sponge
+ *              using '#' and ' ' characters based on the specified level.
  */
 void menger(int level)
 {
