@@ -22,11 +22,11 @@ try:
         if len(parts) > 2 and parts[-2] in dict_codes_counter:
             dict_codes_counter[parts[-2]] += 1
             total_size += int(parts[-1])
-            counter += 1
+    counter += 1
 
-        if counter == 10:
-            print_stats()
-            counter = 0
+    if counter == 10:
+        print_stats()
+        counter = 0
 
 except KeyboardInterrupt:
     print_stats()
@@ -34,4 +34,3 @@ except KeyboardInterrupt:
 
 finally:
     print_stats()
-    
