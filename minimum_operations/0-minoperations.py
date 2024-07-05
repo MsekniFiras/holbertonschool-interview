@@ -8,7 +8,7 @@ def minOperations(n):
         return 0  # If n is less than 2, it's impossible to achieve using operations
 
     operations = 0
-    factor = 2 
+    factor = 2  # Start checking for factors from 2
 
     # Loop until n becomes 1
     while n > 1:
