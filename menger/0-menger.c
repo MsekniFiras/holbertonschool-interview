@@ -13,23 +13,23 @@ void menger(int level)
     int size, i, j, k, l;
     char symbol;
 
-    if (level < 0)
+        if (level < 0)
         return;
 
     size = pow(3, level);
 
     for (i = 0; i < size; i++)
-    {
-        for (j = 0; j < size; j++)
         {
-            symbol = '#';
-            k = i;
-            l = j;
+    for (j = 0; j < size; j++)
+        {
+    symbol = '#';
+    k = i;
+    l = j;
             while (k > 0 || l > 0)
-            {
-                if (k % 3 == 1 && l % 3 == 1)
-                {
-                    symbol = ' ';
+           {
+            if (k % 3 == 1 && l % 3 == 1)
+               {
+                symbol = ' ';
                     break;
                 }
                 k /= 3;
