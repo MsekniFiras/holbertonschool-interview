@@ -36,3 +36,4 @@ finally:
     for k, v in sorted(dict_codes_counter.items()):
         if v != 0:
             print("{}: {}".format(k, v))
+            
