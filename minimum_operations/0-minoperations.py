@@ -1,9 +1,11 @@
 #!/usr/bin/python3
 """
-    Calculate the minimum number of operations needed to get n 'H' characters in the file
+    Calculate the minimum number of operations
  """
 
 def minOperations(n):
+
+
     if n < 2:
         return 0
 
