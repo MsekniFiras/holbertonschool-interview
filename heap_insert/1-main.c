@@ -1,8 +1,6 @@
-#include "binary_trees.h"
 #include <stdlib.h>
 #include <stdio.h>
-
-void binary_tree_print(const binary_tree_t *);
+#include "binary_trees.h"
 
 /**
  * main - Entry point
