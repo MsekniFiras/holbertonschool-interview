@@ -2,41 +2,42 @@
 #include <math.h>
 
 /**
- * menger - Draws a 2D Menger Sponge of a given level.
- * @level: the level of the Menger Sponge to draw
+ * menger - Draws a 2D Menger Sponge
+ * @level: Level of the Menger Sponge to draw
  *
- * Description: This function prints a 2D representation of a Menger Sponge
- *              using '#' and ' ' characters based on the specified level.
+ * Description: Draws a 2D Menger Sponge by printing a pattern of
+ * '#' for blocks and ' ' for holes, based on the specified level.
+ * The pattern is drawn on the standard output.
  */
 void menger(int level)
 {
-    int size, i, j, k, l;
-    char symbol;
+	int size, i, j, k, l;
+	char symbol;
 
-        if (level < 0)
-        return;
+	if (level < 0)
+		return;
 
-    size = pow(3, level);
+	size = pow(3, level);
 
-    for (i = 0; i < size; i++)
-        {
-    for (j = 0; j < size; j++)
-        {
-    symbol = '#';
-    k = i;
-    l = j;
-            while (k > 0 || l > 0)
-           {
-            if (k % 3 == 1 && l % 3 == 1)
-               {
-                symbol = ' ';
-                    break;
-                }
-                k /= 3;
-                l /= 3;
-            }
-            printf("%c", symbol);
-        }
-        printf("\n");
-    }
+	for (i = 0; i < size; i++)
+	{
+		for (j = 0; j < size; j++)
+		{
+			symbol = '#';
+			k = i;
+			l = j;
+			while (k > 0 || l > 0)
+			{
+				if (k % 3 == 1 && l % 3 == 1)
+				{
+					symbol = ' ';
+					break;
+				}
+				k /= 3;
+				l /= 3;
+			}
+			printf("%c", symbol);
+		}
+		printf("\n");
+	}
 }
