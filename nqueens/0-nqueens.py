@@ -33,6 +33,8 @@ def solve_n_queens(chessboard, column, board_size):
             solve_n_queens(chessboard, column + 1, board_size)
             chessboard[i][column] = False
 
+import sys
+
 def main():
     """Main function to solve N Queens problem."""
     if len(sys.argv) != 2:
@@ -53,3 +55,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+    
