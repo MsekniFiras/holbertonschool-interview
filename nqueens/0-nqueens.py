@@ -2,49 +2,54 @@
 """N queens classical problem."""
 import sys
 
-def print_solution(queens):
-    """Print the list of queens' positions."""
-    solution = []
-    for i in range(len(queens)):
-        solution.append([i, queens[i]])
-    print(solution)
+def extract_solution(board, n):
+    """Extract solution from board."""
+    solutions = []
+    for x in range(n):
+        for y in range(n):
+            if board[x][y]:
+                solutions.append([x, y])
+    return solutions
 
-def is_safe(queens, row, col):
-    """Check if a queen can be placed on board at row, col."""
-    for i in range(row):
-        if queens[i] == col or \
-           queens[i] - i == col - row or \
-           queens[i] + i == col + row:
+def position_is_valid(chessboard, position, board_size):
+    """Check if a position is valid on the chessboard."""
+    for i in range(board_size):
+        if chessboard[position[0]][i] or chessboard[i][position[1]]:
+            return False
+        if position[0] + i < board_size and position[1] - i >= 0 and chessboard[position[0] + i][position[1] - i]:
+            return False
+        if position[0] - i >= 0 and position[1] + i < board_size and chessboard[position[0] - i][position[1] + i]:
             return False
     return True
 
-def solve_nqueens(n, row, queens):
-    """Use backtracking to find all solutions."""
-    if row == n:
-        print_solution(queens)
-    else:
-        for col in range(n):
-            if is_safe(queens, row, col):
-                queens[row] = col
-                solve_nqueens(n, row + 1, queens)
-                queens[row] = -1
+def solve_n_queens(chessboard, column, board_size):
+    """Solve N Queens problem using backtracking."""
+    if column >= board_size:
+        print(extract_solution(chessboard, board_size))
+        return
+    for i in range(board_size):
+        if position_is_valid(chessboard, (i, column), board_size):
+            chessboard[i][column] = True
+            solve_n_queens(chessboard, column + 1, board_size)
+            chessboard[i][column] = False
 
-def nqueens(n):
-    """Main function to solve the N queens puzzle."""
-    queens = [-1] * n
-    solve_nqueens(n, 0, queens)
-
-if __name__ == "__main__":
+def main():
+    """Main function to solve N Queens problem."""
     if len(sys.argv) != 2:
         print("Usage: nqueens N")
         sys.exit(1)
     try:
-        n = int(sys.argv[1])
+        N = int(sys.argv[1])
     except ValueError:
         print("N must be a number")
         sys.exit(1)
-    if n < 4:
-        print("N must be at least 4")
+
+    if N < 4:
+        print('N must be at least 4')
         sys.exit(1)
-    nqueens(n)
-    
+    board = [[False for _ in range(N)] for _ in range(N)]
+
+    solve_n_queens(board, 0, N)
+
+if __name__ == "__main__":
+    main()
