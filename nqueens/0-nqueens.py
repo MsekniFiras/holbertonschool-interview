@@ -1,58 +1,67 @@
 #!/usr/bin/python3
-"""N queens classical problem."""
+''' Python3 program to solve N Queen Problem '''
 import sys
 
-def extract_solution(board, n):
-    """Extract solution from board."""
-    solutions = []
-    for x in range(n):
-        for y in range(n):
-            if board[x][y]:
-                solutions.append([x, y])
-    return solutions
+if len(sys.argv) != 2:
+    print('Usage: nqueens N')
+    exit(1)
 
-def position_is_valid(chessboard, position, board_size):
-    """Check if a position is valid on the chessboard."""
-    for i in range(board_size):
-        if chessboard[position[0]][i] or chessboard[i][position[1]]:
+try:
+    N = int(sys.argv[1])
+except ValueError:
+    print('N must be a number')
+    exit(1)
+
+if N < 4:
+    print('N must be at least 4')
+    exit(1)
+
+def printSolution(board):
+    """ A utility function to print solution """
+    queens = []
+    for i in range(N):
+        for j in range(N):
+            if board[i][j] == 1:
+                queens.append([i, j])
+    print(queens)
+
+def isSafe(board, row, col):
+    """ Check if it's safe to place a queen at board[row][col] """
+    for i in range(col):
+        if board[row][i]:
             return False
-        if position[0] + i < board_size and position[1] - i >= 0 and chessboard[position[0] + i][position[1] - i]:
+    i, j = row, col
+    while i >= 0 and j >= 0:
+        if board[i][j]:
             return False
-        if position[0] - i >= 0 and position[1] + i < board_size and chessboard[position[0] - i][position[1] + i]:
+        i -= 1
+        j -= 1
+    i, j = row, col
+    while j >= 0 and i < N:
+        if board[i][j]:
             return False
+        i += 1
+        j -= 1
     return True
 
-def solve_n_queens(chessboard, column, board_size):
-    """Solve N Queens problem using backtracking."""
-    if column >= board_size:
-        print(extract_solution(chessboard, board_size))
+def solveNQUtil(board, col):
+    """ Use backtracking to solve the N Queen problem """
+    if col == N:
+        printSolution(board)
+        return True
+    res = False
+    for i in range(N):
+        if isSafe(board, i, col):
+            board[i][col] = 1
+            res = solveNQUtil(board, col + 1) or res
+            board[i][col] = 0
+    return res
+
+def solveNQ():
+    """ Initialize the board and call the utility function """
+    board = [[0 for j in range(N)] for i in range(N)]
+    if not solveNQUtil(board, 0):
+        print("Solution does not exist")
         return
-    for i in range(board_size):
-        if position_is_valid(chessboard, (i, column), board_size):
-            chessboard[i][column] = True
-            solve_n_queens(chessboard, column + 1, board_size)
-            chessboard[i][column] = False
 
-import sys
-
-def main():
-    """Main function to solve N Queens problem."""
-    if len(sys.argv) != 2:
-        print("Usage: nqueens N")
-        sys.exit(1)
-    try:
-        N = int(sys.argv[1])
-    except ValueError:
-        print("N must be a number")
-        sys.exit(1)
-
-    if N < 4:
-        print('N must be at least 4')
-        sys.exit(1)
-    board = [[False for _ in range(N)] for _ in range(N)]
-
-    solve_n_queens(board, 0, N)
-
-if __name__ == "__main__":
-    main()
-    
+solveNQ()
