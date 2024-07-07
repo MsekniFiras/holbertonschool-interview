@@ -12,10 +12,9 @@ int advanced_binary(int *array, size_t size, int value)
 {
 	size_t i, h, idx = 0;
 	int temp;
-
 	if (array == NULL)
 		return (-1);
-	printf("Searching in array: "); 
+	printf("Searching in array: ");
 	for (i = 0; i < size; i++)
 	{
 		if (i == size - 1)
