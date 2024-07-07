@@ -10,21 +10,21 @@
 
 int advanced_binary(int *array, size_t size, int value)
 {
-	size_t i, h, idx = 0;
-	int temp;
+    size_t i, h, idx = 0;
+    int temp;
 
-	if (array == NULL)
-		return (-1);
-	
-	printf("Searching in array: "); 
-	
-	for (i = 0; i < size; i++)
-	{
-		if (i == size - 1)
-			printf("%d\n", array[i]);
-		else
-			printf("%d, ", array[i]);
-	}
+    if (array == NULL)
+        return (-1);
+    
+    printf("Searching in array: ");
+    
+    for (i = 0; i < size; i++)
+    {
+        if (i == size - 1)
+            printf("%d\n", array[i]);
+        else
+            printf("%d, ", array[i]);
+    }
 	
 	if (size == 1 && array[0] != value)
 		return (-1);
